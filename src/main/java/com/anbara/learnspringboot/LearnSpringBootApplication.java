@@ -1,9 +1,9 @@
 package com.anbara.learnspringboot;
 
+import com.anbara.learnspringboot.config.AppConfig;
 import io.micrometer.observation.Observation;
 import io.micrometer.observation.ObservationRegistry;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.http.HttpStatusCode;
@@ -22,7 +22,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collection;
 
-@EnableConfigurationProperties
+@EnableConfigurationProperties(AppConfig.class)
 @SpringBootApplication
 public class LearnSpringBootApplication {
 
