@@ -1,0 +1,23 @@
+name: Build & Deploy App
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    name: build app
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout the code
+        uses: actions/checkout@v2
+      - name: setup jdk
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'corretto'
+          java-version: 17
+      - name: Unit Test
+        run: mvn -B test --file pom.xml
+
+      - name: build
+        run: mvn -B package --file pom.xml
