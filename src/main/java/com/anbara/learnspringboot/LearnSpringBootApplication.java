@@ -65,9 +65,9 @@ public class LearnSpringBootApplication {
     class ErrorHandlingControllerAdvice {
 
         @ExceptionHandler
-        ProblemDetail handle(IllegalArgumentException iae ) {
+        ProblemDetail handle(IllegalArgumentException iae) {
             return ProblemDetail
-                    .forStatusAndDetail(HttpStatusCode.valueOf(503) ,"the name is invalid");
+                    .forStatusAndDetail(HttpStatusCode.valueOf(503), "the name is invalid");
         }
     }
 
@@ -100,4 +100,6 @@ public class LearnSpringBootApplication {
 
     record Customer(Integer id, String name) {
     }
+
+
 }

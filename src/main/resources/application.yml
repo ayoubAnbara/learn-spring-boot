@@ -1,0 +1,28 @@
+notification:
+  service: email
+#notification.service=sms
+spring:
+  profiles:
+    active: '@active.profile@'
+  mvc:
+    problemdetails:
+      enabled: true
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: *
+#  endpoint:
+#    health:
+#
+#      show-details: always
+#      probes:
+#        enabled: true
+
+# create application-local.yml
+app:
+  config:
+    aws:
+      access-key-id: ${AWS.ACCESS_KEY}
+      secret-key: ${AWS.SECRET_KEY}
+      endpoint-sqs: https://sqs.eu-west-3.amazonaws.com/220077732519/myqueue_standard
