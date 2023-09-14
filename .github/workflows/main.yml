@@ -35,7 +35,7 @@ jobs:
          mvn -B package -Dspring.profiles.active=staging --file pom.xml
          aws s3 cp target/*.jar s3://${{ secrets.AWS_S3_BUCKET }}/
          echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key && chmod 600 private_key 
-         ssh -o StrictHostKeyChecking=no -i private_key ${{secrets.USER_NAME}}@${{secrets.SSH_HOST}} '
+         ssh -o StrictHostKeyChecking=no -i private_key ${{secrets.SSH_USER_NAME}}@${{secrets.SSH_HOST}} '
                touch test_file.txt
                '
 #         mkdir staging && cp target/*.jar staging
