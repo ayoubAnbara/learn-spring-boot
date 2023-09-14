@@ -43,7 +43,7 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "target/*.jar"
-          target: /home/ec2-user
+          target: /home/ec2-user/artifact-spring
       - name: Start Spring boot app on the remote server
         run: |
            echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key && chmod 600 private_key
