@@ -34,11 +34,7 @@ jobs:
         run: |
          mvn -B package -Dspring.profiles.active=staging --file pom.xml
 #         aws s3 cp target/*.jar s3://${{ secrets.AWS_S3_BUCKET }}/
-         echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key && chmod 600 private_key
-#         scp target/*.jar ${{secrets.SSH_USER_NAME}}@${{secrets.SSH_HOST}}:/home/ec2-user
-#         ssh -o StrictHostKeyChecking=no -i private_key ${{secrets.SSH_USER_NAME}}@${{secrets.SSH_HOST}} '
-#              ls
-#               '
+
       - name: upload
         uses: appleboy/scp-action@v0.1.4
         with:
@@ -48,6 +44,14 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "target/*.jar"
           target: /home/ec2-user
+
+
+      #         echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key && chmod 600 private_key
+      #         scp target/*.jar ${{secrets.SSH_USER_NAME}}@${{secrets.SSH_HOST}}:/home/ec2-user
+      #         ssh -o StrictHostKeyChecking=no -i private_key ${{secrets.SSH_USER_NAME}}@${{secrets.SSH_HOST}} '
+      #              ls
+      #               '
+
 #         mkdir staging && cp target/*.jar staging
 
 #      - uses: actions/upload-artifact@v3
