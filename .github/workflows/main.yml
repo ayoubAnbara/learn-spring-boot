@@ -40,17 +40,14 @@ jobs:
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER_NAME }}
-          port: 22
+          port: ${{ secrets.SSH_PORT }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "target/*.jar"
           target: /home/ec2-user
-
-
-      #         echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key && chmod 600 private_key
-      #         scp target/*.jar ${{secrets.SSH_USER_NAME}}@${{secrets.SSH_HOST}}:/home/ec2-user
-      #         ssh -o StrictHostKeyChecking=no -i private_key ${{secrets.SSH_USER_NAME}}@${{secrets.SSH_HOST}} '
-      #              ls
-      #               '
+      - name: Start Spring boot app on the remote server
+        run: |
+           echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key && chmod 600 private_key
+           ssh -o StrictHostKeyChecking=no -i private_key ${{secrets.SSH_USER_NAME}}@${{secrets.SSH_HOST}} '/home/ec2-user/restart.sh'
 
 #         mkdir staging && cp target/*.jar staging
 
