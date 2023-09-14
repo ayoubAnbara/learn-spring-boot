@@ -33,11 +33,13 @@ jobs:
       - name: Build and Package Maven
         run: |
          mvn -B package -Dspring.profiles.active=staging --file pom.xml
-         mkdir staging && cp target/*.jar staging
-      - uses: actions/upload-artifact@v3
-        with:
-          name: Package
-          path: staging
+         aws s3 cp target/*.jar s3://${{ secrets.AWS_S3_BUCKET }}/
+#         mkdir staging && cp target/*.jar staging
+
+#      - uses: actions/upload-artifact@v3
+#        with:
+#          name: Package
+#          path: staging
 #        working-directory: ${{ env.applicationfolder }}
 
       #      - name: Setup Docker Image # although sometimes docker is overwintering
@@ -47,13 +49,13 @@ jobs:
       #          dockerfile: Dockerfile # VMware recommend to not write Dockerfile use spring-boot:build-image plugin
       #          push: false
       #          tags: ${{secrets.AWS_ACCESS_KEY_ID}}/learn-spring-boot:${{ env.sha_short }}
-      - uses: actions/checkout@master
-      - uses: shallwefootball/s3-upload-action@master
-        with:
-          aws_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_access_key: ${{ secrets.AWS_SECRET_KEY}}
-          aws_bucket: ${{ secrets.AWS_S3_BUCKET }}
-          source_dir: 'staging'
+#      - uses: actions/checkout@master
+#      - uses: shallwefootball/s3-upload-action@master
+#        with:
+#          aws_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#          aws_secret_access_key: ${{ secrets.AWS_SECRET_KEY}}
+#          aws_bucket: ${{ secrets.AWS_S3_BUCKET }}
+#          source_dir: 'staging'
 
 
 
