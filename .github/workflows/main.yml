@@ -39,6 +39,14 @@ jobs:
          ssh -o StrictHostKeyChecking=no -i private_key ${{secrets.SSH_USER_NAME}}@${{secrets.SSH_HOST}} '
               ls
                '
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER_NAME }}
+          port: 22
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: "target/*.jar"
+          target: /home/ec2-user
 #         mkdir staging && cp target/*.jar staging
 
 #      - uses: actions/upload-artifact@v3
