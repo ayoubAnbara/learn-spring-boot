@@ -3,7 +3,7 @@ name: Build & Deploy App
 on:
   push:
     branches:
-      - main
+#      - main disable ci cd
 
 env:
 #  applicationfolder: ./spring-boot-folder
