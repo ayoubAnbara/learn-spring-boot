@@ -1,4 +1,4 @@
-/*
+
 package com.anbara.learnspringboot.awsSQS;
 
 import io.awspring.cloud.sqs.annotation.SqsListener;
@@ -6,10 +6,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RestController;
 
-*/
+
 /**
  * @author Ayoub ANBARA
- *//*
+ */
 
 @RestController
 public class SQSController {
@@ -19,4 +19,4 @@ public class SQSController {
         logger.info("message from SQS Queue {}", message);
     }
 }
-*/
+

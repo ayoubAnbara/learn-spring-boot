@@ -15,7 +15,7 @@
     <description>learn-spring-boot</description>
     <properties>
         <java.version>17</java.version>
-        <spring-cloud.version>3.0.2</spring-cloud.version>
+        <spring-cloud.version>3.0.0</spring-cloud.version>
     </properties>
     <dependencies>
         <dependency>
@@ -49,33 +49,34 @@
             <scope>test</scope>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>io.awspring.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-aws-starter-sqs</artifactId>-->
-<!--        </dependency>-->
-      <!--  <dependency>
-            <groupId>io.awspring.cloud</groupId>
-            <artifactId>spring-cloud-aws-starter-core</artifactId>
-        </dependency>-->
+        <dependency>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>sqs</artifactId>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/io.awspring.cloud/spring-cloud-aws-sqs -->
-       <!-- <dependency>
+
+
+        <dependency>
             <groupId>io.awspring.cloud</groupId>
-            <artifactId>spring-cloud-aws-sqs</artifactId>
-            <version>3.0.2</version>
-        </dependency>-->
+            <artifactId>spring-cloud-aws-starter-sqs</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.awspring.cloud</groupId>
+            <artifactId>spring-cloud-aws-starter</artifactId>
+        </dependency>
 
     </dependencies>
-    <!--<dependencyManagement>
+    <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>io.awspring.cloud</groupId>
                 <artifactId>spring-cloud-aws-dependencies</artifactId>
-                <version>${spring-clould.version}</version>
+                <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
         </dependencies>
-    </dependencyManagement>-->
+    </dependencyManagement>
     <build>
         <plugins>
             <plugin>
